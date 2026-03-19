@@ -115,8 +115,7 @@ Show population growth of India for the last 20 years.
 Clone repository
 
 ```bash
-git clone https://github.com/yourusername/multi-agent-research-chart-system.git
-cd multi-agent-research-chart-system
+git clone https://github.com/dishadutta04/multi-agent-langgraph-workflows.git
 ```
 
 Install dependencies
@@ -204,15 +203,9 @@ Final Visualization
 ```
 
 ---
+## 🏗️ Multi-Agent Architecture
 
-# 🏆 Key Benefits
-
-✔ Demonstrates **real-world multi-agent architecture**
-✔ Modular agent design
-✔ Easy to extend with new agents
-✔ Clear LangGraph workflow orchestration
-
----
+![Multi Agent Architecture](https://raw.githubusercontent.com/dishadutta04/multi-agent-langgraph-workflows/main/AI%20collaboration%20architectures%20infographic.png)
 
 # 🔮 Future Improvements
 
@@ -222,19 +215,4 @@ Final Visualization
 * 🗄️ Database storage
 * 🤖 More specialized agents
 
----
 
-# 📜 License
-
-MIT License
-
----
-
-अगर चाहो तो मैं तुम्हारे project के लिए और भी powerful चीजें बना सकता हूँ:
-
-* **🔥 GitHub project banner image**
-* **LangGraph workflow diagram (professional)**
-* **agent architecture diagram**
-* **portfolio-level README (जो recruiters को impress करे)**
-
-अगर बोलो तो मैं **5 मिनट में README को GitHub trending level बना दूंगा** 🚀
