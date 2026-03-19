@@ -147,7 +147,14 @@ LANGCHAIN_PROJECT=multi-agent-research
 # ▶️ Run the Project
 
 ```
-python main.py
+# Run the hierarchical agent teams demo
+python scripts/hierarchical_agent_teams.py
+
+# Run the agent supervisor demo
+python scripts/agent_supervisor.py
+
+# Run the multi-agent collaboration demo
+python scripts/multi_agent_collaboration.py
 ```
 
 Example query:
