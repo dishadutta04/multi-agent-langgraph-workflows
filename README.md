@@ -1,349 +1,240 @@
 
 
-# 1️⃣ Multi-Agent Collaboration (Research + Chart Agent)
+# 🤖 Multi-Agent Research & Chart Generation System
 
-## Workflow Diagram
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Workflow-green)
+![LangChain](https://img.shields.io/badge/LangChain-AI%20Framework-orange)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-black)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-```text
+A **LangGraph powered multi-agent system** where specialized AI agents collaborate to research information and generate data visualizations automatically.
+
+This project demonstrates how **multiple AI agents can work together in a workflow** to complete complex tasks like:
+
+* Data research
+* Data processing
+* Chart generation
+
+---
+
+# 🚀 Features
+
+### 🔍 Research Agent
+
+* Collects information from the internet
+* Uses **search APIs** to gather relevant data
+* Extracts structured information
+* Sends results to other agents
+
+### 📊 Chart Generator Agent
+
+* Receives data from Research Agent
+* Uses **Python tools** to create charts
+* Generates visual insights from raw data
+
+### 🤝 Multi-Agent Collaboration
+
+* Agents communicate through **LangGraph workflow**
+* Each agent performs a **specialized task**
+* Data flows automatically between agents
+
+---
+
+# 🏗️ System Architecture
+
+```
                 ┌───────────────┐
-                │     User      │
-                │ Ask Question  │
-                └───────┬───────┘
+                │      User      │
+                │   Ask Query    │
+                └───────┬────────┘
                         │
                         ▼
              ┌────────────────────┐
-             │  Researcher Agent  │
-             │ (Data Collection)  │
-             └─────────┬──────────┘
-                       │
-                       ▼
-             ┌────────────────────┐
-             │   Tavily Search    │
-             │  Web Data Fetch    │
-             └─────────┬──────────┘
+             │   Research Agent    │
+             │  (Web Data Fetch)   │
+             └─────────┬───────────┘
                        │
                        ▼
              ┌────────────────────┐
              │ Chart Generator    │
-             │ (Python REPL)      │
+             │   (Python Tool)    │
              └─────────┬──────────┘
                        │
                        ▼
                 ┌───────────────┐
-                │   FINAL       │
-                │   OUTPUT      │
-                │  Chart/Graph  │
+                │   Final Output │
+                │  Charts + Data │
                 └───────────────┘
 ```
 
 ---
 
-## Agent Responsibilities
+# 🧠 Workflow
 
-### 🧠 Researcher Agent
+1️⃣ User asks a research question
 
-**Work**
-
-* User question analyze karta hai
-* Internet se data search karta hai
-* Relevant statistics nikalta hai
-
-**Tool Used**
+Example:
 
 ```
-TavilySearchResults
+Show population growth of India for the last 20 years.
 ```
 
-**Example Task**
+2️⃣ **Research Agent**
 
+* Searches the web
+* Collects relevant data
+
+3️⃣ **Chart Generator Agent**
+
+* Receives structured data
+* Generates charts using Python
+
+4️⃣ System returns:
+
+* research insights
+* generated chart
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology                | Purpose                   |
+| ------------------------- | ------------------------- |
+| Python                    | Core programming language |
+| LangChain                 | LLM framework             |
+| LangGraph                 | Multi-agent orchestration |
+| OpenAI API                | LLM intelligence          |
+| Tavily API                | Web search                |
+| Matplotlib / Python Tools | Chart generation          |
+
+---
+
+# 📦 Installation
+
+Clone repository
+
+```bash
+git clone https://github.com/yourusername/multi-agent-research-chart-system.git
+cd multi-agent-research-chart-system
 ```
-Fetch UK's GDP over last 5 years
-```
 
-**Output**
+Install dependencies
 
-```text
-GDP Data:
-2019: 2.85T
-2020: 2.70T
-2021: 3.13T
-2022: 3.08T
-2023: 3.33T
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-### 📊 Chart Generator Agent
+# 🔑 Environment Variables
 
-**Work**
-
-* Researcher ka data receive karta hai
-* Python code generate karta hai
-* Graph / chart banata hai
-
-**Tool Used**
+Create `.env` file
 
 ```
-PythonREPL
+OPENAI_API_KEY=your_openai_api_key
+TAVILY_API_KEY=your_tavily_api_key
 ```
 
-**Example Code Generated**
-
-```python
-import matplotlib.pyplot as plt
-
-years = [2019,2020,2021,2022,2023]
-gdp = [2.85,2.70,3.13,3.08,3.33]
-
-plt.plot(years,gdp)
-plt.title("UK GDP Growth")
-plt.show()
-```
-
-**Output**
+Optional (LangSmith tracing)
 
 ```
-Line Chart of UK GDP
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_PROJECT=multi-agent-research
 ```
 
 ---
 
-# 2️⃣ Agent Supervisor Architecture
-
-## Workflow Diagram
-
-```text
-                ┌─────────────┐
-                │    User     │
-                └──────┬──────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ Supervisor Agent│
-              │ Decision Maker  │
-              └───────┬─────────┘
-                      │
-        ┌─────────────┴─────────────┐
-        ▼                           ▼
-┌──────────────────┐       ┌──────────────────┐
-│ Research Agent   │       │ Coding Agent     │
-│ Web Search       │       │ Python Analysis  │
-└──────────┬───────┘       └──────────┬───────┘
-           │                          │
-           ▼                          ▼
-      Search Tool                Python Tool
-           │                          │
-           └──────────┬───────────────┘
-                      ▼
-               Final Response
-```
-
----
-
-## Agent Roles
-
-### 👨‍💼 Supervisor Agent
-
-**Work**
-
-* Decide karta hai **kaunsa agent next kaam kare**
-* Conversation flow control karta hai
-
-**Example**
+# ▶️ Run the Project
 
 ```
-User: Calculate average GDP growth
+python main.py
 ```
 
-Decision:
+Example query:
 
 ```
-Step 1 → Research Agent
-Step 2 → Coding Agent
-```
-
----
-
-### 🔎 Research Agent
-
-**Work**
-
-* Data collect karna
-* Web search karna
-
-**Output**
-
-```
-Raw data
-statistics
-facts
-```
-
----
-
-### 💻 Coding Agent
-
-**Work**
-
-* Data process karna
-* Calculation karna
-* Charts / reports banana
-
-**Output**
-
-```
-analysis result
-python output
-visualization
-```
-
----
-
-# 3️⃣ Hierarchical Agent Teams
-
-## Architecture Diagram
-
-```text
-                   ┌─────────────┐
-                   │    User     │
-                   └──────┬──────┘
-                          │
-                          ▼
-                 ┌─────────────────┐
-                 │ Top Supervisor  │
-                 │ Task Manager    │
-                 └───────┬─────────┘
-                         │
-         ┌───────────────┴───────────────┐
-         ▼                               ▼
- ┌─────────────────┐             ┌──────────────────┐
- │ Research Team   │             │ Writing Team     │
- │                 │             │                  │
- │ Search Agent    │             │ Document Agent   │
- │ Scraper Agent   │             │ Editor Agent     │
- └────────┬────────┘             └─────────┬────────┘
-          │                                │
-          ▼                                ▼
-      Data Collected                Final Document
-```
-
----
-
-## Hierarchical Roles
-
-### 🧠 Top Supervisor
-
-Work:
-
-* Task breakdown
-* Team assignment
-* Final answer validation
-
----
-
-### 🔎 Research Team
-
-Agents:
-
-```
-Search Agent
-Web Scraper Agent
-```
-
-Work:
-
-```
-collect information
-extract data
-verify sources
+Compare GDP growth of India and China and create a chart.
 ```
 
 Output:
 
+* researched data
+* generated chart visualization
+
+---
+
+# 📂 Project Structure
+
 ```
-structured research data
+multi-agent-project/
+│
+├── main.py
+│
+├── agents/
+│   ├── researcher_agent.py
+│   ├── chart_agent.py
+│
+├── tools/
+│   ├── search_tool.py
+│   ├── chart_tool.py
+│
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-### ✍️ Writing Team
-
-Agents:
+# 📊 Multi-Agent Flow (LangGraph)
 
 ```
-Document Generator
-Editor Agent
-```
-
-Work:
-
-```
-report writing
-content formatting
-summary generation
-```
-
-Output:
-
-```
-final report
-document
-analysis summary
-```
-
----
-
-# 4️⃣ Complete Multi-Agent Data Flow
-
-```text
 User Query
      │
      ▼
-Task Understanding
+Research Agent
      │
      ▼
-Agent Selection
+Data Processing
      │
      ▼
-Tool Execution
+Chart Agent
      │
      ▼
-Agent Collaboration
-     │
-     ▼
-Final Answer
-```
-
----
-https://github.com/dishadutta04/multi-agent-langgraph-workflows/blob/main/AI%20collaboration%20architectures%20infographic.png
-# ⭐ Example Execution (Your Project)
-
-User input:
-
-```
-Fetch UK's GDP over the past 5 years and draw a chart
-```
-
-Execution:
-
-```
-Researcher → Tavily Search → GDP data
-Chart Agent → Python REPL → Graph
-```
-
-Final output:
-
-```
-GDP Visualization
+Final Visualization
 ```
 
 ---
 
-💡 Agar chaho to main tumhare repo ke liye **aur bhi powerful cheezein bana sakta hoon**:
+# 🏆 Key Benefits
 
-* 🔥 **LangGraph visual agent workflow diagram (image based)**
-* 🔥 **Agent interaction graph**
-* 🔥 **AI Research + Report generator project**
-* 🔥 **Streamlit UI for agents**
+✔ Demonstrates **real-world multi-agent architecture**
+✔ Modular agent design
+✔ Easy to extend with new agents
+✔ Clear LangGraph workflow orchestration
 
-Ye repo ko **AI engineer portfolio level (very impressive)** bana deta hai.
+---
+
+# 🔮 Future Improvements
+
+* 📈 Data Analysis Agent
+* 📑 Report Generator Agent
+* 🌐 Web UI Dashboard
+* 🗄️ Database storage
+* 🤖 More specialized agents
+
+---
+
+# 📜 License
+
+MIT License
+
+---
+
+अगर चाहो तो मैं तुम्हारे project के लिए और भी powerful चीजें बना सकता हूँ:
+
+* **🔥 GitHub project banner image**
+* **LangGraph workflow diagram (professional)**
+* **agent architecture diagram**
+* **portfolio-level README (जो recruiters को impress करे)**
+
+अगर बोलो तो मैं **5 मिनट में README को GitHub trending level बना दूंगा** 🚀
